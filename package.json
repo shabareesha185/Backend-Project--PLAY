@@ -1,14 +1,22 @@
 {
-  "name": "04.project",
+  "name": "backend-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is focused on the backend development for video streaming services.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js"
   },
+  "keywords": [
+    "JavaScript",
+    "Node",
+    "Play",
+    "Backend"
+  ],
   "author": "Shabareesha",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
   }
 }
