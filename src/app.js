@@ -19,7 +19,7 @@ app.use(express.json({
 
 app.use(express.urlencoded({
     extended: true,
-    limit: "16kb",
+    limit: "16kb",z
 })); // configuration of URL
 
 app.use(express.static('public')); // anyone can access this file
