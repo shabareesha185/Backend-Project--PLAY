@@ -7,6 +7,7 @@ dotenv.config({
 });
 
 const app = express();
+
 const {PORT} = process.env;
 const port = PORT || 3000;
 
