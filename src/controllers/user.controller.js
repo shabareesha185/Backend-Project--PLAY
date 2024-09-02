@@ -12,14 +12,19 @@ const registerUser = asyncHandler(async (req, res) => {
     // get user details from frontend
     // validation - not empty
     const { fullName, email, username, password } = req.body;
+    console.log(fullName);
+    console.log(email);
+    console.log(username);
+    console.log(password);
     if (
-        [fullName, email, username, password].some((field) => field?.trim() === "")
+        // [fullName, email, username, password].some((field) => field?.trim() === "")
+       !fullName || !email || !username || !password
     ) {
         throw new ApiError(400, "All User Fields are Required");
     }
 
     // check if user already exists: username, email
-    const exsistedUser = User.findOne({
+    const exsistedUser = await User.findOne({
         $or: [{ username }, { email }],
     });
     if (exsistedUser) {
@@ -44,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         fullName,
         avatar: avatar.url,
-        coverImage: cover?.url || "",
+        coverImage: coverImage?.url || "",
         username: username.toLowerCase(),
         email,
         password,
@@ -61,9 +66,9 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // return res
-    return res.status(201).json(
-        new ApiResponse(200, createdUser, "User registered successfully")
-    );
+    return res
+        .status(201)
+        .json(new ApiResponse(200, createdUser, "User registered successfully"));
 });
 
 export { registerUser };
